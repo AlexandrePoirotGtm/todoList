@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Default.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +106,10 @@
     <Compile Include="Migrations\201809170744287_AjoutController.cs" />
     <Compile Include="Migrations\201809170744287_AjoutController.Designer.cs">
       <DependentUpon>201809170744287_AjoutController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809170834493_MajTaches.cs" />
+    <Compile Include="Migrations\201809170834493_MajTaches.Designer.cs">
+      <DependentUpon>201809170834493_MajTaches.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categorie.cs" />
@@ -129,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809170744287_AjoutController.resx">
       <DependentUpon>201809170744287_AjoutController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809170834493_MajTaches.resx">
+      <DependentUpon>201809170834493_MajTaches.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
