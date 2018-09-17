@@ -36,8 +36,8 @@ namespace todoList.Controllers
             return Ok(tache);
         }
 
-        // PUT: api/Taches/5
-        [ResponseType(typeof(void))]
+		// PUT: api/Taches/5
+		[ResponseType(typeof(void))]
         public IHttpActionResult PutTache(int id, Tache tache)
         {
             if (!ModelState.IsValid)
@@ -71,8 +71,22 @@ namespace todoList.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Taches
-        [ResponseType(typeof(Tache))]
+		[ResponseType(typeof(void))]
+		[HttpPut]
+		[Route("api/tachestatut/{id}")]
+		public IHttpActionResult PutTacheStatut(int id, bool statut)
+		{
+			Tache tache = db.Taches.Find(id);
+			if (tache == null)
+				return NotFound();
+			tache.Statut = statut;
+			db.SaveChanges();
+			return StatusCode(HttpStatusCode.NoContent);
+		}
+
+
+		// POST: api/Taches
+		[ResponseType(typeof(Tache))]
         public IHttpActionResult PostTache(Tache tache)
         {
             if (!ModelState.IsValid)

@@ -111,6 +111,10 @@
     <Compile Include="Migrations\201809170834493_MajTaches.Designer.cs">
       <DependentUpon>201809170834493_MajTaches.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809171053444_test.cs" />
+    <Compile Include="Migrations\201809171053444_test.Designer.cs">
+      <DependentUpon>201809171053444_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categorie.cs" />
     <Compile Include="Models\Tache.cs" />
@@ -137,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809170834493_MajTaches.resx">
       <DependentUpon>201809170834493_MajTaches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809171053444_test.resx">
+      <DependentUpon>201809171053444_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
