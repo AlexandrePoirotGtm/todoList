@@ -14,25 +14,62 @@
 			<form>
 				<div class="form-group">
 					<label for="Nom">Nom</label>
-					<input type="text" class="form-control" id="Nom" />
+					<input type="text" class="form-control" id="Nom" required />
 				</div>
 				<div class="form-group">
 					<label for="Description">Description</label>
-					<input type="text" class="form-control" id="Description" />
+					<textarea class="form-control" id="Description" rows="3"></textarea>
 				</div>
 				<div class="form-group">
 					<label for="Categorie">Categorie</label>
-					<input type="text" class="form-control" id="Categorie" />
+					<select class="form-control" id="Categorie" required></select>
 				</div>
-				<button class="btn btn-primary" onclick="Enregistrer()">Enregistrer</button>
+				<button class="btn btn-primary" onclick="return Enregistrer()">Enregistrer</button>
 
 			</form>
 		</div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 		<script>
 			function Enregistrer() {
-				
+				var tache = {
+					Nom: $('#Nom').val(),
+					Description: $('#Description').val(),
+					CategorieID: $('#Categorie').val(),
+				};
+				$.ajax({
+					type: 'POST',
+					url: '/api/taches',
+					data: tache,
+					dataType: 'json',
+					success: function () {
+						window.location.href = '/index.html';
+					},
+					error: function () {
+						alert('aie aie aie Caramba !!');
+					}
+				});
+
+				return false;
 			}
+
+			function LoadCategories() {
+				$.ajax({
+					url: '/api/categories',
+					success : function (categories) {
+						var select = $("#Categorie");
+						select.empty();
+
+						for (categorie of categories) {
+							var option = $('<option></option>');
+							option.val(categorie.ID);
+							option.text(categorie.Nom);
+							select.append(option);
+						}
+					}
+				});
+			}
+
+			LoadCategories();
 		</script>
 	</body>
 </html>
