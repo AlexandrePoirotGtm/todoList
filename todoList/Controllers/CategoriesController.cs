@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 using todoList.Data;
 using todoList.Models;
 
@@ -57,15 +61,17 @@ namespace todoList.Controllers
 			return StatusCode(HttpStatusCode.NoContent);
 		}
 
+		// DELETE: api/Categories/5
+		[ResponseType(typeof(Categorie))]
 		public IHttpActionResult DeleteCategories(int id)
 		{
-
 			var categorie = db.Categories.Find(id);
 			if (categorie == null)
 				return NotFound();
 
-			db.Entry(categorie).State = System.Data.Entity.EntityState.Modified;
+			db.Entry(categorie).State = System.Data.Entity.EntityState.Deleted;
 			db.SaveChanges();
+
 			return Ok(categorie);
 		}
 
